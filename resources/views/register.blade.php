@@ -5,9 +5,6 @@
   {{ csrf_field() }}
   
 
-    <fieldset>
-         <h3 align="center">Rejestracja</h3><br />
-
        @if(session('response'))
         <div class="col-md-8 alert alert-success">
           {{session('response')}}

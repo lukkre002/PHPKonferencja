@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Hash;
 
 class LogController extends Controller
 {
@@ -14,18 +15,23 @@ class LogController extends Controller
 
         //return redirect('/')->with('response', $email."----".$password);
 
-        $checklogin= DB::table('uzytkowniks')->where(['email'=>$email,'haslo'=>$password])->get();
+        $checklogin= DB::table('uzytkowniks')->where(['email'=>$email])->get();
+        foreach ($checklogin as $checkloginone) {
+            $hashedPassword=$checkloginone->haslo;    
+        }
 
-        if(count($checklogin) > 0)
+        //return redirect('/')->with('response', $email."----".$hashedPassword);
+
+        if ((Hash::check($password, $hashedPassword)) && (count($checklogin) == 1) )
         {
-            return redirect('/')->with('response', 'Zalogowano');
+            return redirect('/')->with('response', 'Zalogowano');            
         }
         else
         {
              return redirect('/')->with('responseError', 'Błędnie podane dane spróbuj ponownie lub zarejestruj się');
         }
-    
 
+        
     }
 
     function index()

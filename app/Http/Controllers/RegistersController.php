@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Uzytkownik;
 use DB;
+use Illuminate\Support\Facades\Hash;
 
 class RegistersController extends Controller
 {
@@ -20,7 +21,7 @@ class RegistersController extends Controller
          'code' => 'required',
          'city' => 'required',
          'street' => 'required',
-         'password1' => 'required|min:8',
+         'password1' => 'required|min:8|max:20',
          'password2' => 'required',
          'select' => 'required'
         );
@@ -34,7 +35,9 @@ class RegistersController extends Controller
             'street.required' => 'Podaj ulicę!',
             'password1.required' => 'Podaj swoje hasło!',
             'password2.required' => 'Podaj ponownie swoje hasło!',
-            'select.required' => 'Wybierz swoją rolę!'
+            'select.required' => 'Wybierz swoją rolę!',
+            'password1.min' => 'Hasło musi mieć minimum 8 znaków!',
+            'password1.max' => 'Hasło może mieć maksymanie 20 znaków!'
         );
 
         $validator = $this->validate($request, $rules, $message);
@@ -51,6 +54,10 @@ class RegistersController extends Controller
         {
             return redirect('/register')->with('responseError','Hasła nie są identyczne!');
         }
+        else
+        {
+             $hashed =  Hash::make($request->input('password1'));
+        }
 
     	$Uzytkownik = new Uzytkownik;
     	$Uzytkownik->imie = $request->input('name');
@@ -60,8 +67,8 @@ class RegistersController extends Controller
     	$Uzytkownik->kod_pocztowy = $request->input('code');
     	$Uzytkownik->miejscowosc = $request->input('city');
 		$Uzytkownik->ulica = $request->input('street');
-		$Uzytkownik->rola = $request->input('name');
-		$Uzytkownik->haslo = $request->input('password1');
+		$Uzytkownik->rola = $request->input('select');
+		$Uzytkownik->haslo = $hashed;
 		$Uzytkownik->status = false;
 
 		$Uzytkownik->save();
