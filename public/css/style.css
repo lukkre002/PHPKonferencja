@@ -1,0 +1,27 @@
+.formCntr{
+width:60%; 
+margin:auto;
+}
+
+.textIndex
+{
+	font-size: 40px;
+	margin: 5%;
+}
+
+.boxLogin
+ {
+    width:300px; 
+    margin-left:55%;
+ }
+
+ .tablee
+ {
+ 	background-color: rgba(0,0,0,0.1); 
+ 	margin-top: 40px;
+ 	padding-top: 10px;
+ 	padding-left: 50px;
+ 	padding-right: 50px;
+ 	color: black;
+ }
+
