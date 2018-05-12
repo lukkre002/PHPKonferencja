@@ -12,6 +12,10 @@ class RegistersController extends Controller
 
     public function registerAdd(Request $request)
     {
+        $secretLocalhost="6LeW5VgUAAAAANnHxEfVhbO8rwYHpOHn3PR_lzLP";
+
+        $sprawdz = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secretLocalhost.'&response='.$_POST['g-recaptcha-response']);
+        $odpowiedz = json_decode($sprawdz);
 
         $rules = array(
          'name' => 'required',
@@ -59,7 +63,12 @@ class RegistersController extends Controller
              $hashed =  Hash::make($request->input('password1'));
         }
 
-    	$Uzytkownik = new Uzytkownik;
+        if ($odpowiedz->success==false)
+        {
+            return redirect('/register')->with('responseError','Potwierdz, że nie jestes botem!');
+        }
+
+        $Uzytkownik = new Uzytkownik;
     	$Uzytkownik->imie = $request->input('name');
     	$Uzytkownik->nazwisko = $request->input('surname');
     	$Uzytkownik->email = $request->input('email');

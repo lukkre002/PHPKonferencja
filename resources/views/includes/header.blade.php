@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html><script src='https://www.google.com/recaptcha/api.js'></script>
+<html>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <head>
 
 <style type="text/css">

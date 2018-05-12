@@ -78,9 +78,8 @@
         </select>
       </div>
 
-     <div class="g-recaptcha" data-sitekey="6Lcqk1MUAAAAAFCGUcyCcVYNH9WKejP5ikvl4zLJ"/>
-       
-  
+    {{--recaptcha localhost--}}
+    <div class="g-recaptcha" data-sitekey="6LeW5VgUAAAAADBIcNQhzUyvyBk4O8acYlCdwhmr"></div>
 
   </div>
   <div align="center" >
@@ -91,6 +90,4 @@
 </div>
 
 
-
-@include('includes.captcha')
 @include('includes.footer')
