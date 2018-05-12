@@ -12,9 +12,10 @@
 */
 Route::get('/', 'LogController@index');
 
-Route::get('/register', function () {
+Route::get('/register/registerAdd', function () {
     return view('register');
 });
+
 
 Route::post('/register/registerAdd', 'RegistersController@registerAdd');
 

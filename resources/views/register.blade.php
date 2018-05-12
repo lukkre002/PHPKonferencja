@@ -1,9 +1,15 @@
 @include('includes.header')
 
+
+
+
 <div class="formCntr">
   <form method="POST" action="{{ url('/register/registerAdd') }}">
   {{ csrf_field() }}
   
+
+
+
 
     <fieldset>
          <h3 align="center">Rejestracja</h3><br />
@@ -83,12 +89,10 @@
 
      <div class="g-recaptcha" data-sitekey="6Lcqk1MUAAAAAFCGUcyCcVYNH9WKejP5ikvl4zLJ"/>
        
-  
-
   </div>
-  <div align="center" >
-          <button align="center" type="submit" class="btn btn-primary">Zarejestruj</button>
-          </div>
+      <div align="center" >
+        <button type="submit" class="btn btn-primary">Zarejestruj</button>
+      </div>
 
   </form>       
 </div>

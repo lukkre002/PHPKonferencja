@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Uzytkownik;
 use DB;
+use Illuminate\Support\Facades\Hash;
 
 class RegistersController extends Controller
 {
@@ -51,6 +52,10 @@ class RegistersController extends Controller
         {
             return redirect('/register')->with('responseError','Hasła nie są identyczne!');
         }
+        else
+        {
+             $hashed =  Hash::make($request->input('password1'));
+        }
 
     	$Uzytkownik = new Uzytkownik;
     	$Uzytkownik->imie = $request->input('name');
@@ -60,8 +65,8 @@ class RegistersController extends Controller
     	$Uzytkownik->kod_pocztowy = $request->input('code');
     	$Uzytkownik->miejscowosc = $request->input('city');
 		$Uzytkownik->ulica = $request->input('street');
-		$Uzytkownik->rola = $request->input('name');
-		$Uzytkownik->haslo = $request->input('password1');
+		$Uzytkownik->rola = $request->input('select');
+		$Uzytkownik->haslo = $hashed;
 		$Uzytkownik->status = false;
 
 		$Uzytkownik->save();
