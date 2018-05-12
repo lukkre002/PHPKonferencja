@@ -16,8 +16,10 @@ class LogController extends Controller
         //return redirect('/')->with('response', $email."----".$password);
 
         $checklogin= DB::table('uzytkowniks')->where(['email'=>$email])->get();
+
+        $hashedPassword="pass";
         foreach ($checklogin as $checkloginone) {
-            $hashedPassword=$checkloginone->haslo;    
+            $hashedPassword=$checkloginone->haslo;
         }
 
         //return redirect('/')->with('response', $email."----".$hashedPassword);

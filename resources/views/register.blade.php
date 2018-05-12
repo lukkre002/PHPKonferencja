@@ -1,9 +1,11 @@
 @include('includes.header')
 
+
+
+
 <div class="formCntr">
   <form method="POST" action="{{ url('/register/registerAdd') }}">
   {{ csrf_field() }}
-  
 
        @if(session('response'))
         <div class="col-md-8 alert alert-success">
@@ -78,13 +80,16 @@
         </select>
       </div>
 
+
     {{--recaptcha localhost--}}
     <div class="g-recaptcha" data-sitekey="6LeW5VgUAAAAADBIcNQhzUyvyBk4O8acYlCdwhmr"></div>
 
+       
+
   </div>
-  <div align="center" >
-          <button align="center" type="submit" class="btn btn-primary">Zarejestruj</button>
-          </div>
+      <div align="center" >
+        <button type="submit" class="btn btn-primary">Zarejestruj</button>
+      </div>
 
   </form>       
 </div>

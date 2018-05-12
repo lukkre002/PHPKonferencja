@@ -63,10 +63,12 @@ class RegistersController extends Controller
              $hashed =  Hash::make($request->input('password1'));
         }
 
+
         if ($odpowiedz->success==false)
         {
             return redirect('/register')->with('responseError','Potwierdz, że nie jestes botem!');
         }
+
 
         $Uzytkownik = new Uzytkownik;
     	$Uzytkownik->imie = $request->input('name');

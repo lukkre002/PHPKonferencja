@@ -17,11 +17,17 @@ margin:auto;
 
  .tablee
  {
- 	background-color: rgba(0,0,0,0.1); 
+ 	background-color: rgba(0,0,0,0.6);
  	margin-top: 40px;
  	padding-top: 10px;
  	padding-left: 50px;
  	padding-right: 50px;
- 	color: black;
+ 	color: greenyellow;
  }
 
+ .articleBox{
+	 width: 50%;
+	 margin: auto;
+	 align: center;
+
+ }
