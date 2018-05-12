@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Uzytkownik;
+use DB;
 
 class RegistersController extends Controller
 {
@@ -19,7 +20,7 @@ class RegistersController extends Controller
          'code' => 'required',
          'city' => 'required',
          'street' => 'required',
-         'password1' => 'required',
+         'password1' => 'required|min:8',
          'password2' => 'required',
          'select' => 'required'
         );
@@ -37,6 +38,14 @@ class RegistersController extends Controller
         );
 
         $validator = $this->validate($request, $rules, $message);
+
+        $email= $request->input('email');
+        $checklogin= DB::table('uzytkowniks')->where(['email'=>$email])->get();
+
+        if(count($checklogin) > 0)
+        {
+            return redirect('/register')->with('responseError','Użytkownik o podanym e-mail już istnieje!');
+        }
 
         if ($request->input('password1')!=$request->input('password2'))
         {

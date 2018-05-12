@@ -9,8 +9,8 @@ class LogController extends Controller
 {
     public function login(Request $req)
     {
-        $email= $req->input('email');
-        $password = $req->input('password');
+        $email= htmlspecialchars($req->input('email'));
+        $password = htmlspecialchars($req->input('password'));
 
         //return redirect('/')->with('response', $email."----".$password);
 
