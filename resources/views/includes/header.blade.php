@@ -10,7 +10,7 @@
 </style>
 
 
-  <title>Zarejestruj się</title>
+  <title>Konferencja</title>
   <link rel="stylesheet" type="text/css" href="{{ url('css/bootstrap.css')}}">
   <link rel="stylesheet" type="text/css" href="{{ url('css/jquery-ui.css')}}">
   <link rel="stylesheet" type="text/css" href="{{ url('css/style.css')}}">
