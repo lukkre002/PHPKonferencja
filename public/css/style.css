@@ -11,11 +11,12 @@ margin:auto;
 
 .boxLogin
  {
-    width:300px; 
-    margin-left:55%;
+	margin-top: 120px;
+    width:300px;
+    margin-left:56%;
  }
 
- .tablee
+ .tableRegistrations
  {
  	background-color: rgba(0,0,0,0.6);
  	margin-top: 40px;
@@ -30,4 +31,10 @@ margin:auto;
 	 margin: auto;
 	 align: center;
 
+ }
+
+ .viewPage
+ {
+	 padding-left: 300px;
+	 padding-right: 300px;
  }

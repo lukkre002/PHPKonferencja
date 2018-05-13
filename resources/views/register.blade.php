@@ -26,7 +26,7 @@
       @endif
 
 
-<div class="tablee">
+<div class="tableRegistrations">
       <div class="form-group">
         <label for="InputName1">Imię</label>
         <input class="form-control" name="name" id="InputName1" aria-describedby="Help" placeholder="Wpisz imie" >

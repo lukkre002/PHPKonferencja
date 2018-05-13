@@ -22,6 +22,8 @@ class LogController extends Controller
             $hashedPassword=$checkloginone->haslo;
         }
 
+
+
         //return redirect('/')->with('response', $email."----".$hashedPassword);
 
         if ((Hash::check($password, $hashedPassword)) && (count($checklogin) == 1) )
