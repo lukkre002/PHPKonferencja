@@ -20,6 +20,11 @@ Route::get('/addatricle', function() {
     return view('addarticle');
 });
 
+Route::get('/users', function () {
+    return view('users');
+});
+
+
 Route::post('/register/registerAdd', 'RegistersController@registerAdd');
 
 Route::post('/loginme', 'LogController@login');

@@ -15,7 +15,7 @@ margin:auto;
     margin-left:55%;
  }
 
- .tablee
+ .tableRegistrations
  {
  	background-color: rgba(0,0,0,0.6);
  	margin-top: 40px;
@@ -38,3 +38,9 @@ div.vspace1em {
 	 align: center;
 
  }
+
+.viewPage
+{
+	padding-left: 300px;
+	padding-right: 300px;
+}
