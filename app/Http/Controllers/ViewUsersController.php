@@ -44,17 +44,19 @@ class ViewUsersController extends Controller
 
     public function setStatusUsers(Request $request)
     {
-        $id = $_POST['id'];
-        $status = $_POST['status'];
-        $user = DB::table('uzytkowniks')->where(['nr_uzykownika'=>$id])->get();
+       $id= $request->get("id");
 
+       $users = DB::table('uzytkowniks')->where(['nr_uzykownika'=>$id])->get();
+
+        foreach ($users as $user) {
+            $status=$user->status;
+        }
 
         if ($status == false) {
-           // return redirect('/')->with('responseError', '000000');
             DB::table('uzytkowniks')->where('nr_uzykownika', $id)->update(array('status' => true));
         } else {
             DB::table('uzytkowniks')->where('nr_uzykownika', $id)->update(array('status' => false));
-            //return redirect('/')->with('responseError', '11111');
+
         }
 
         $data['data'] = DB::table('uzytkowniks')->get();

@@ -46,12 +46,10 @@
 
 
                 @if( $value->status==0 )
-                    <td><a><button type="submit" class="btn btn-primary" >Zatwierdź</button></a>
+                    <td><a><button type="submit" class="btn btn-primary" name="id" value= {{  $value->nr_uzykownika }}>Zatwierdź</button></a>
                 @else
-                    <td><a><button type="submit" class="btn btn-primary" >Anuluj</button></a>
+                    <td><a><button type="submit" class="btn btn-primary" name="id" value= {{  $value->nr_uzykownika }}>Anuluj</button></a>
                 @endif
-                        <input type="hidden" name="id" value= {{  $value->nr_uzykownika }} />
-                        <input type="hidden" name="status" value= {{  $value->status }} />
 
 
 
