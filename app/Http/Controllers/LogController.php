@@ -24,6 +24,7 @@ class LogController extends Controller
         foreach ($checklogin as $checkloginone) {
             $hashedPassword=$checkloginone->haslo;
             $role=$checkloginone->rola;
+            $name=$checkloginone->imie;
         }
 
         //return redirect('/')->with('response', $email."----".$hashedPassword);
@@ -32,7 +33,7 @@ class LogController extends Controller
         {
 
             $_SESSION["login"] = "TRUE";
-            $_SESSION["username"] = $email;
+            $_SESSION["username"] = $name;
             $_SESSION["userrole"] = $role;
             return redirect('/')->with('response', 'Zalogowano');
         }
@@ -41,8 +42,6 @@ class LogController extends Controller
             $_SESSION["login"] = "FALSE";
             return redirect('/')->with('responseError', 'Błędnie podane dane spróbuj ponownie lub zarejestruj się');
         }
-
-        
     }
 
     function index()
@@ -54,8 +53,11 @@ class LogController extends Controller
     ///????
     function logout()
     {
-     Auth::logout();
-     return redirect('index');
+        $_SESSION["login"] = "FALSE";
+        session_start();
+        session_unset();
+        session_destroy();
+        return redirect('/')->with('response', 'Pomyślnie wylogowano!');
     }
 
 }

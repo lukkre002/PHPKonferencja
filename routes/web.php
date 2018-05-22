@@ -20,20 +20,17 @@ Route::get('/addatricle', function() {
     return view('addarticle');
 });
 
-//Route::get('/users', function () {
-//    return view('users');
-//});
 
-Route::get('/users', 'ViewUsersController@getUsers');
 Route::get('/surveylist','ViewSurveysController@getSurveys');
 
 
-
+Route::get('/users', 'ViewUsersController@getUsers');
 Route::post('/users', 'ViewUsersController@setStatusUsers');
 
-Route::post('/register/registerAdd', 'RegistersController@registerAdd');
 
+Route::post('/register/registerAdd', 'RegistersController@registerAdd');
 Route::post('/loginme', 'LogController@login');
 
+Route::get('/logout', 'LogController@logout');
 
 
