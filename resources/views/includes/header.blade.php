@@ -58,18 +58,17 @@
           <a class="nav-link" href="/konferencja/public/users">Użytkownicy <span class="sr-only">(current)</span></a>
         </li>
 
+        <div style='text-align:right'>
+          <li class="nav-item"  >
+            <a class="nav-link" href="/konferencja/public/logout">Wyloguj się <span class="sr-only">(current)</span></a>
+          </li>
+        </div>
+
       </ul>
 
 
-      <!--     <ul class="navbar-nav">
-          <li class="nav-item">
-              <a class="nav-link" href="/konferencja/public/register">Rejestracja</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="/konferencja/public/login">Zaloguj</a>
-          </li>
 
-         </ul> -->
+
 
     </div>
 </nav>
