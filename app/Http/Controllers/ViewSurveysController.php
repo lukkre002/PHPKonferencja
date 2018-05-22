@@ -24,4 +24,12 @@ class ViewSurveysController extends Controller
             return view('surveylist');
         }
     }
+    public function openSurvey(Request $request)
+    {
+        $id= $request->get("id");
+
+        $data['data'] = DB::table('ankieta_pytanie')->where(['ankieta_id'=>$id])->get();
+
+        return view('/survey', $data);
+    }
 }

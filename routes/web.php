@@ -26,6 +26,7 @@ Route::get('/addatricle', function() {
 
 Route::get('/users', 'ViewUsersController@getUsers');
 Route::get('/surveylist','ViewSurveysController@getSurveys');
+Route::post('/surveylist/survey','ViewSurveysController@openSurvey');
 
 
 
