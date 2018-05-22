@@ -2,6 +2,7 @@
 
 <div class="formCntr">
     <form method="POST" action="{{ url('/register/registerAdd') }}">
+
         {{ csrf_field() }}
 
 

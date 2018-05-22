@@ -8,27 +8,38 @@ use Illuminate\Support\Facades\Hash;
 
 class LogController extends Controller
 {
+
     public function login(Request $req)
     {
+        session_start();
+
+        ///injection
         $email= htmlspecialchars($req->input('email'));
         $password = htmlspecialchars($req->input('password'));
 
         //return redirect('/')->with('response', $email."----".$password);
 
         $checklogin= DB::table('uzytkowniks')->where(['email'=>$email])->get();
+
         foreach ($checklogin as $checkloginone) {
-            $hashedPassword=$checkloginone->haslo;    
+            $hashedPassword=$checkloginone->haslo;
+            $role=$checkloginone->rola;
         }
 
         //return redirect('/')->with('response', $email."----".$hashedPassword);
 
         if ((Hash::check($password, $hashedPassword)) && (count($checklogin) == 1) )
         {
-            return redirect('/')->with('response', 'Zalogowano');            
+
+            $_SESSION["login"] = "TRUE";
+            $_SESSION["username"] = $email;
+            $_SESSION["userrole"] = $role;
+            return redirect('/')->with('response', 'Zalogowano');
         }
         else
         {
-             return redirect('/')->with('responseError', 'Błędnie podane dane spróbuj ponownie lub zarejestruj się');
+            $_SESSION["login"] = "FALSE";
+            return redirect('/')->with('responseError', 'Błędnie podane dane spróbuj ponownie lub zarejestruj się');
         }
 
         
