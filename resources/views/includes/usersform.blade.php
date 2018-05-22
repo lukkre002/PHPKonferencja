@@ -1,4 +1,4 @@
-<div class="formCntr">
+<div class="tableUsers">
 
     <form method="POST" action="{{ url('/users') }}">
         {{ csrf_field() }}

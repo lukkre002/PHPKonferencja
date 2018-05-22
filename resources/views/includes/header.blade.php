@@ -51,7 +51,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Ankiety</a>
+          <a class="nav-link" href="/konferencja/public/surveylist">Ankiety</a>
         </li>
 
         <li class="nav-item">
