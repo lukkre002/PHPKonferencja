@@ -58,11 +58,23 @@
           <a class="nav-link" href="/konferencja/public/users">Użytkownicy <span class="sr-only">(current)</span></a>
         </li>
 
-        <div style='text-align:right'>
-          <li class="nav-item"  >
-            <a class="nav-link" href="/konferencja/public/logout">Wyloguj się <span class="sr-only">(current)</span></a>
-          </li>
-        </div>
+          <?php
+          if(!isset($_SESSION))
+          {
+              session_start();
+          }
+          ?>
+
+        @if((isset($_SESSION["login"])) && $_SESSION["login"] == "TRUE"  )
+
+          <div style='text-align:right'>
+            <li class="nav-item"  >
+              <a class="nav-link" href="/konferencja/public/logout">Wyloguj się <span class="sr-only">(current)</span></a>
+            </li>
+          </div>
+
+        @endif
+
 
       </ul>
 
