@@ -16,9 +16,10 @@ Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/addatricle', function() {
-    return view('addarticle');
-});
+Route::get('/uploadfile','UploadController@getView');
+//--------------upload file nad store in database
+Route::post('/insertfile',array('as'=>'insertfile','uses'=>'UploadController@insertFile'));
+
 
 
 Route::get('/surveylist','ViewSurveysController@getSurveys');
