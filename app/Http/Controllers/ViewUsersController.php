@@ -11,9 +11,7 @@ use function Sodium\add;
 
 class ViewUsersController extends Controller
 {
-
-
-    //uzyj case i session do okreslenia grupy ktora ma byc wygenerowana
+    
     public function useButton(Request $request)
     {
         if(!isset($_SESSION))
@@ -82,16 +80,16 @@ class ViewUsersController extends Controller
 
             if ($wybor=="Administrator")
             {
-                $data['data'] = DB::table('uzytkowniks')->where('rola', '!=', $wybor)->get();
+                $users['users'] = DB::table('uzytkowniks')->where('rola', '!=', $wybor)->get();
             }
             else
             {
-                $data['data'] = DB::table('uzytkowniks')->where(['rola'=>$wybor])->get();
+                $users['users'] = DB::table('uzytkowniks')->where(['rola'=>$wybor])->get();
             }
 
-            if (count($data) > 0)
+            if (count($users) > 0)
             {
-                return view('users', $data );
+                return view('users', $users );
             }
             else
             {

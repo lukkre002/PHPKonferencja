@@ -22,32 +22,32 @@
 
         </tr>
 
-        @foreach($data as $value)
+        @foreach($users as $user)
 
             <tr>
                 {{--<td>{{  $value->nr_uzykownika  }}</td>--}}
-                <td>{{  $value->imie  }}</td>
-                <td>{{  $value->nazwisko  }}</td>
-                <td>{{  $value->email  }}</td>
-                <td>{{  $value->telefon  }}</td>
-                <td>{{  $value->miejscowosc  }}</td>
-                <td>{{  $value->kod_pocztowy }}</td>
-                <td>{{  $value->ulica  }}</td>
-                <td>{{  $value->rola  }}</td>
+                <td>{{  $user->imie  }}</td>
+                <td>{{  $user->nazwisko  }}</td>
+                <td>{{  $user->email  }}</td>
+                <td>{{  $user->telefon  }}</td>
+                <td>{{  $user->miejscowosc  }}</td>
+                <td>{{  $user->kod_pocztowy }}</td>
+                <td>{{  $user->ulica  }}</td>
+                <td>{{  $user->rola  }}</td>
                 <td>
-                    @if( $value->status==0 )
+                    @if( $user->status==0 )
                         Niezatwierdzony
                     @else
                         Zatwierdzony
                     @endif
                 </td>
-                <td>{{  $value->created_at  }}</td>
+                <td>{{  $user->created_at  }}</td>
 
 
-                @if( $value->status==0 )
-                    <td><a><button type="submit" class="btn btn-primary" name="action" value= {{  $value->nr_uzykownika }}>Zatwierdź</button></a>
+                @if( $user->status==0 )
+                    <td><a><button type="submit" class="btn btn-primary" name="action" value= {{  $user->nr_uzykownika }}>Zatwierdź</button></a>
                 @else
-                    <td><a><button type="submit" class="btn btn-primary" name="action" value= {{  $value->nr_uzykownika }}>Anuluj</button></a>
+                    <td><a><button type="submit" class="btn btn-primary" name="action" value= {{  $user->nr_uzykownika }}>Anuluj</button></a>
                 @endif
 
 
