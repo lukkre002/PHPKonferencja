@@ -26,12 +26,13 @@ class UploadController extends Controller
     }
 
     public function insertFile(){
+        session_start();
 
 
 
         $filetitle=Input::get('file_title');
         $file= Input::file('filenam');
-
+        $userid = $_SESSION["userID"];
 
 
         $rules = array(
@@ -55,8 +56,9 @@ class UploadController extends Controller
             if (Input::file('filenam')->isValid()) {
 
                 $extension = Input::file('filenam')->getClientOriginalExtension();
-                $filename = rand(11111,99999).'.'.$extension;
 
+                $ldate = date('Y-m-d H:i:s');
+                $filename = rand(11111,99999).'.'.$extension;
 
 
                 $destinationPath = 'up_file';
@@ -65,6 +67,11 @@ class UploadController extends Controller
                 $data=array(
                     'file_title' => $filetitle,
                     'file_name' => $filename,
+                    'userid' => $userid,
+                    'date' => $ldate,
+
+
+
                 );
 
 
