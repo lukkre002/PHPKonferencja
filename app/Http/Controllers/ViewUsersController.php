@@ -7,16 +7,52 @@ use App\Uzytkownik;
 use DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\LogController;
+use function Sodium\add;
 
 class ViewUsersController extends Controller
 {
 
-    public function getUsers(Request $request)
+    public function useButton(Request $request)
     {
-        session_start();
+        if(!isset($_SESSION))
+        {
+            session_start();
+        }
+        switch ($request->input('action')) {
+            case 'Autor':
+                    $wybor="Autor";
+                    $_SESSION["wybor_uzytkownikow"] = $wybor;
+                    return $this->getUsers();
+                break;
 
-        if(!(isset($_SESSION["login"])) || $_SESSION["login"] == "FALSE"  ) {
+            case 'Recenzent':
+                    $wybor="Recenzent";
+                    $_SESSION["wybor_uzytkownikow"] = $wybor;
+                    return $this->getUsers();
+                break;
+            case 'Administrator':
+                    $wybor="Administrator";
+                    $_SESSION["wybor_uzytkownikow"] = $wybor;
+                    return $this->getUsers();
+                break;
+            default:
+                return $this->setStatusUsers($request->input('action'));
+                break;
 
+        }
+    }
+
+
+
+    public function getUsers()
+    {
+        if(!isset($_SESSION))
+        {
+            session_start();
+        }
+
+        if(!(isset($_SESSION["login"])) || $_SESSION["login"] == "FALSE"  )
+        {
             return redirect('/')->with('responseError', 'Musisz się zalogować!');
         }
         elseif (!($_SESSION["userrole"] == "Administrator" ))
@@ -25,13 +61,30 @@ class ViewUsersController extends Controller
         }
 
         else
-        {
-            $data['data'] = DB::table('uzytkowniks')->get();
 
+        {
+           if((isset($_SESSION["wybor_uzytkownikow"])))
+           {
+               $wybor=$_SESSION["wybor_uzytkownikow"];
+           }
+           else
+           {
+               $wybor="Administrator";
+           }
+
+
+            if ($wybor=="Administrator")
+            {
+                $data['data'] = DB::table('uzytkowniks')->where('rola', '!=', $wybor)->get();
+            }
+            else
+            {
+                $data['data'] = DB::table('uzytkowniks')->where(['rola'=>$wybor])->get();
+            }
 
             if (count($data) > 0)
             {
-                return view('users', $data);
+                return view('users', $data );
             }
             else
             {
@@ -42,11 +95,12 @@ class ViewUsersController extends Controller
     }
 
 
-    public function setStatusUsers(Request $request)
+    public function setStatusUsers($id)
     {
-       $id= $request->get("id");
+      // $id= $request->get("id");
 
        $users = DB::table('uzytkowniks')->where(['nr_uzykownika'=>$id])->get();
+
 
         foreach ($users as $user) {
             $status=$user->status;
@@ -59,7 +113,11 @@ class ViewUsersController extends Controller
 
         }
 
-        $data['data'] = DB::table('uzytkowniks')->get();
-        return view('/users', $data);
+
+        return $this->getUsers();
+//
+//        $data['data'] = DB::table('uzytkowniks')-> where('rola', '!=', 'Administrator')->get();
+//
+//        return view('/users', $data);
     }
 }

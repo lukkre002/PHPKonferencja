@@ -27,7 +27,8 @@ Route::post('/surveylist/survey','ViewSurveysController@openSurvey');
 
 
 Route::get('/users', 'ViewUsersController@getUsers');
-Route::post('/users', 'ViewUsersController@setStatusUsers');
+
+Route::post('/users', 'ViewUsersController@useButton');
 
 
 Route::post('/register/registerAdd', 'RegistersController@registerAdd');

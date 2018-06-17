@@ -47,7 +47,11 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Artykuły</a>
+          <a class="nav-link" href="/konferencja/public">Recenzje</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/konferencja/public/uploadfile">Artykuły</a>
         </li>
 
         <li class="nav-item">
@@ -69,7 +73,7 @@
 
           <div style='text-align:right'>
             <li class="nav-item"  >
-              <a class="nav-link" href="/konferencja/public/logout">Wyloguj się <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/konferencja/public/logout">Wyloguj się  [ {{ ($_SESSION["username"]) }} ]  <span class="sr-only">(current)</span></a>
             </li>
           </div>
 

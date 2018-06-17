@@ -23,7 +23,6 @@
         </tr>
 
         @foreach($data as $value)
-            @if( $value->rola!='Administrator' )
 
             <tr>
                 {{--<td>{{  $value->nr_uzykownika  }}</td>--}}
@@ -46,18 +45,23 @@
 
 
                 @if( $value->status==0 )
-                    <td><a><button type="submit" class="btn btn-primary" name="id" value= {{  $value->nr_uzykownika }}>Zatwierdź</button></a>
+                    <td><a><button type="submit" class="btn btn-primary" name="action" value= {{  $value->nr_uzykownika }}>Zatwierdź</button></a>
                 @else
-                    <td><a><button type="submit" class="btn btn-primary" name="id" value= {{  $value->nr_uzykownika }}>Anuluj</button></a>
+                    <td><a><button type="submit" class="btn btn-primary" name="action" value= {{  $value->nr_uzykownika }}>Anuluj</button></a>
                 @endif
 
 
 
-
-
             </tr>
-            @endif
+
         @endforeach
+
+        <td><a><button type="submit" class="btn btn-primary" name="action" value="Recenzent">Recenzenci</button></a>
+        <td><a><button type="submit" class="btn btn-primary" name="action" value="Autor">Autorzy</button></a>
+        <td><a><button type="submit" class="btn btn-primary" name="action" value="Administrator">Wszyscy</button></a>
+
+
+
 
     </table>
     </form>

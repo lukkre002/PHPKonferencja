@@ -25,23 +25,38 @@ class LogController extends Controller
             $hashedPassword=$checkloginone->haslo;
             $role=$checkloginone->rola;
             $name=$checkloginone->imie;
+            $status=&$checkloginone->status;
         }
 
         //return redirect('/')->with('response', $email."----".$hashedPassword);
 
+
+
+
         if ((Hash::check($password, $hashedPassword)) && (count($checklogin) == 1) )
         {
+            if($status==1) {
 
-            $_SESSION["login"] = "TRUE";
-            $_SESSION["username"] = $name;
-            $_SESSION["userrole"] = $role;
-            return redirect('/')->with('response', 'Zalogowano');
+                $_SESSION["login"] = "TRUE";
+                $_SESSION["username"] = $name;
+                $_SESSION["userrole"] = $role;
+                return redirect('/')->with('response', 'Zalogowano');
+            }
+            else
+            {
+                $_SESSION["login"] = "FALSE";
+                return redirect('/')->with('responseError', 'Twoje konto nie zostało jeszcze aktywowane przez administratora');
+            }
         }
         else
         {
             $_SESSION["login"] = "FALSE";
             return redirect('/')->with('responseError', 'Błędnie podane dane spróbuj ponownie lub zarejestruj się');
         }
+
+
+
+
     }
 
     function index()
