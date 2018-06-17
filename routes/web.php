@@ -19,6 +19,7 @@ Route::get('/register', function () {
 Route::get('/uploadfile','UploadController@getView');
 //--------------upload file nad store in database
 Route::post('/insertfile',array('as'=>'insertfile','uses'=>'UploadController@insertFile'));
+Route::post('/uploadfile','DownloadController@download');
 
 
 //ankiety

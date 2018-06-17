@@ -7,6 +7,7 @@ use Input;
 use Validator;
 use Session;
 use Redirect;
+use DB;
 use App\FileModel;
 
 
@@ -22,7 +23,10 @@ class UploadController extends Controller
 
             return redirect('/')->with('responseError', 'Musisz się zalogować!');
         }
-        return view('uploadfile');
+
+        $files['files'] = DB::table('filetable')->get();
+
+        return view('uploadfile',$files);
     }
 
     public function insertFile(){
@@ -59,7 +63,6 @@ class UploadController extends Controller
 
                 $ldate = date('Y-m-d H:i:s');
                 $filename = rand(11111,99999).'.'.$extension;
-
 
                 $destinationPath = 'up_file';
 
