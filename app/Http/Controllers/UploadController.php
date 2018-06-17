@@ -73,8 +73,6 @@ class UploadController extends Controller
                     'userid' => $userid,
                     'date' => $ldate,
 
-
-
                 );
 
 

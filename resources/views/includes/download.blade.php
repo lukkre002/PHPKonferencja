@@ -1,7 +1,7 @@
 <div class="tableUsers">
 
-    {{--<form method="POST" action="{{ url('/uploadfile') }}">--}}
-        {{--{{ csrf_field() }}--}}
+    <form method="POST" action="{{ url('/selectCritic') }}">
+        {{ csrf_field() }}
 
 
         <table class="table table-hover">
@@ -17,7 +17,8 @@
                 <td>Ulica</td>
                 <td>Tytuł</td>
                 <td>Data dodania</td>
-
+                <td></td>
+                <td>  Recenzent </td>
 
 
             </tr>
@@ -48,14 +49,19 @@
                     <td>{{  $file->date }}</td>
 
 
-                    <td>  <a href="up_file/{{$file->file_name}}" download="{{$file->file_name}}">
-                            <button type="button" class="btn btn-primary">
-                                <i class="glyphicon glyphicon-download">
-                                    Pobierz
-                                </i>
-                            </button>
 
+                    <td>  <a href="up_file/{{$file->file_name}}" download="{{$file->file_name}}">
+                            <button type="button" class="btn btn-primary">Pobierz</button>
                         </a></td>
+
+                      <td>
+                        @if( $file->nr_recenzenta==null )
+                          <a><button type="submit" class="btn btn-primary" name="action" value= {{  $file->id }}>Dodaj</button></a>
+                        @else
+                            Dodany
+                        @endif
+                      </td>
+
 
                 </tr>
 

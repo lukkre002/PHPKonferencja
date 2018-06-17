@@ -19,7 +19,7 @@ Route::get('/register', function () {
 Route::get('/uploadfile','UploadController@getView');
 //--------------upload file nad store in database
 Route::post('/insertfile',array('as'=>'insertfile','uses'=>'UploadController@insertFile'));
-Route::post('/uploadfile','DownloadController@download');
+
 
 
 //ankiety
@@ -40,3 +40,6 @@ Route::get('/logout', 'LogController@logout');
 //pdf
 Route::get('/getPDF', 'PDFController@getPDF');
 
+//recenzent
+Route::post('/selectCritic','SelectCriticController@selectCritic');
+Route::post('/selectCritic/add','SelectCriticController@addCritic');
