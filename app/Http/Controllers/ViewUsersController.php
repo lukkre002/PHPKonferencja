@@ -12,6 +12,8 @@ use function Sodium\add;
 class ViewUsersController extends Controller
 {
 
+
+    //uzyj case i session do okreslenia grupy ktora ma byc wygenerowana
     public function useButton(Request $request)
     {
         if(!isset($_SESSION))
@@ -34,6 +36,11 @@ class ViewUsersController extends Controller
                     $wybor="Administrator";
                     $_SESSION["wybor_uzytkownikow"] = $wybor;
                     return $this->getUsers();
+                break;
+            case 'raport':
+
+                return PDFController::getPDF();
+
                 break;
             default:
                 return $this->setStatusUsers($request->input('action'));

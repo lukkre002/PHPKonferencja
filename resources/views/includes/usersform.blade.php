@@ -59,7 +59,7 @@
         <td><a><button type="submit" class="btn btn-primary" name="action" value="Recenzent">Recenzenci</button></a>
         <td><a><button type="submit" class="btn btn-primary" name="action" value="Autor">Autorzy</button></a>
         <td><a><button type="submit" class="btn btn-primary" name="action" value="Administrator">Wszyscy</button></a>
-
+        <td><a><button type="submit" class="btn btn-primary" name="action" value="raport">Generuj raport</button></a>
 
 
 

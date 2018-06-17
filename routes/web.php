@@ -21,19 +21,21 @@ Route::get('/uploadfile','UploadController@getView');
 Route::post('/insertfile',array('as'=>'insertfile','uses'=>'UploadController@insertFile'));
 
 
-
+//ankiety
 Route::get('/surveylist','ViewSurveysController@getSurveys');
 Route::post('/surveylist/survey','ViewSurveysController@openSurvey');
 
-
+//view users and setusers active
 Route::get('/users', 'ViewUsersController@getUsers');
-
 Route::post('/users', 'ViewUsersController@useButton');
 
-
+//login
 Route::post('/register/registerAdd', 'RegistersController@registerAdd');
 Route::post('/loginme', 'LogController@login');
-
+//logut
 Route::get('/logout', 'LogController@logout');
 
+
+//pdf
+Route::get('/getPDF', 'PDFController@getPDF');
 
