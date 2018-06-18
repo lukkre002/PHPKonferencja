@@ -43,3 +43,9 @@ Route::get('/getPDF', 'PDFController@getPDF');
 //recenzent
 Route::post('/selectCritic','SelectCriticController@selectCritic');
 Route::post('/selectCritic/add','SelectCriticController@addCritic');
+
+//recenzje
+Route::get('/viewCritics', function () {
+    return view('viewCritics');
+});
+Route::post('/writeCritic','CriticController@writeCritices');

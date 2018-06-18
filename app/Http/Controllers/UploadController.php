@@ -23,10 +23,25 @@ class UploadController extends Controller
 
             return redirect('/')->with('responseError', 'Musisz się zalogować!');
         }
+        elseif (($_SESSION["userrole"] == "Recenzent" ))
+        {
+            return redirect('/')->with('responseError', 'Nie masz tutaj dostępu!');
+        }
 
-        $files['files'] = DB::table('filetable')->get();
+        $userid = $_SESSION["userID"];
+
+        if (($_SESSION["userrole"] == "Autor" ))
+        {
+            $files['files'] = DB::table('filetable')->where(['userid'=>$userid])->get();
+        }
+        else
+        {
+            $files['files'] = DB::table('filetable')->get();
+        }
+
 
         return view('uploadfile',$files);
+
     }
 
     public function insertFile(){

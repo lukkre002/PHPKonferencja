@@ -1,4 +1,6 @@
 @include('includes.header')
+@if($_SESSION["userrole"] == "Autor")
+
 
 {!! Form::open(array('url'=>'insertfile','method'=>'POST' ,'class'=>'form-horizontal','files'=>true)) !!}
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -69,6 +71,12 @@
     @endif
 </script>
 
+@endif
+
+{{--@if($_SESSION["userrole"] == "Administrator")--}}
 
 @include('includes.download')
+
+{{--@endif--}}
+
 @include('includes.footer')
