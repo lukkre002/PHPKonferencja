@@ -15,11 +15,13 @@ Route::get('/', 'LogController@index');
 Route::get('/register', function () {
     return view('register');
 });
+Route::post('/register/registerAdd', 'RegistersController@registerAdd');
+
+
 
 Route::get('/uploadfile','UploadController@getView');
 //--------------upload file nad store in database
 Route::post('/insertfile',array('as'=>'insertfile','uses'=>'UploadController@insertFile'));
-
 
 
 //ankiety
@@ -31,7 +33,7 @@ Route::get('/users', 'ViewUsersController@getUsers');
 Route::post('/users', 'ViewUsersController@useButton');
 
 //login
-Route::post('/register/registerAdd', 'RegistersController@registerAdd');
+
 Route::post('/loginme', 'LogController@login');
 //logut
 Route::get('/logout', 'LogController@logout');
@@ -47,3 +49,9 @@ Route::post('/selectCritic/add','SelectCriticController@addCritic');
 //recenzje
 Route::get('/viewCritic','CriticController@viewCritices' );
 Route::post('/writeCritic','CriticController@writeCritices');
+
+Route::get('/writeCritic', function () {
+    return view('/writeCritic');
+});
+
+Route::post('/writeCritic/save', 'CriticController@saveCritices');
