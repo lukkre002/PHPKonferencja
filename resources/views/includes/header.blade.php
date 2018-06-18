@@ -47,7 +47,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/konferencja/public/viewCritics">Recenzje</a>
+          <a class="nav-link" href="/konferencja/public/viewCritic">Recenzje</a>
         </li>
 
         <li class="nav-item">

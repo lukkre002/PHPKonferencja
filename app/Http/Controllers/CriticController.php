@@ -16,16 +16,36 @@ use Illuminate\Support\Facades\Hash;
 
 class CriticController extends Controller
 {
+
+    public function viewCritices()
+    {
+        if(!isset($_SESSION))
+        {
+            session_start();
+        }
+
+
+        if(!(isset($_SESSION["login"])) || $_SESSION["login"] == "FALSE"  )
+        {
+            return redirect('/')->with('responseError', 'Musisz się zalogować!');
+        }
+        else {
+            return view('/viewCritics');
+        }
+    }
     public function writeCritices(Request $request)
     {
-        session_start();
-
+        if(!isset($_SESSION))
+        {
+            session_start();
+        }
 
 
         $idCritic=$request->input('action');
+        $_SESSION["idCriti"] = $idCritic;
 
-        return redirect('/')->with('responseError', $idCritic);
 
+        return view('/writeCritic');
 
     }
 

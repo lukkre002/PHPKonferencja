@@ -13,6 +13,17 @@ class ViewSurveysController extends Controller
  
     public function getSurveys(Request $request)
     {
+        if(!isset($_SESSION))
+        {
+            session_start();
+        }
+
+
+        if(!(isset($_SESSION["login"])) || $_SESSION["login"] == "FALSE"  )
+        {
+            return redirect('/')->with('responseError', 'Musisz się zalogować!');
+        }
+
         $data['data'] = DB::table('ankieta')->get();
  
         if (count($data) > 0)

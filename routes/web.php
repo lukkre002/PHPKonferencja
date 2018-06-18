@@ -45,7 +45,5 @@ Route::post('/selectCritic','SelectCriticController@selectCritic');
 Route::post('/selectCritic/add','SelectCriticController@addCritic');
 
 //recenzje
-Route::get('/viewCritics', function () {
-    return view('viewCritics');
-});
+Route::get('/viewCritic','CriticController@viewCritices' );
 Route::post('/writeCritic','CriticController@writeCritices');

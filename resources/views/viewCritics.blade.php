@@ -21,9 +21,10 @@
 
             </tr>
 
-            <?php
-            $UserId= $_SESSION["userID"];
 
+            <?php
+
+            $UserId= $_SESSION["userID"];
             $critics= DB::table('recenzja')->where(['nr_recenzenta'=>$UserId])->get();
 
             ?>

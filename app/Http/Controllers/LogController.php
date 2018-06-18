@@ -11,7 +11,10 @@ class LogController extends Controller
 
     public function login(Request $req)
     {
-        session_start();
+        if(!isset($_SESSION))
+        {
+            session_start();
+        }
 
         ///injection
         $email= htmlspecialchars($req->input('email'));
@@ -34,12 +37,10 @@ class LogController extends Controller
 
         if(!isset($status))
         {
-            $_SESSION["login"] = "FALSE";
             return redirect('/')->with('responseError', 'Błędnie podane dane spróbuj ponownie lub zarejestruj się');
         }
         elseif($status == 0)
         {
-            $_SESSION["login"] = "FALSE";
             return redirect('/')->with('responseError', 'Twoje konto nie zostało jeszcze aktywowane przez administratora');
         }
 
